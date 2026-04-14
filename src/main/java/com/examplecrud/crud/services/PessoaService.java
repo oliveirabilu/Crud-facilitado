@@ -1,7 +1,11 @@
 package com.examplecrud.crud.services;
 
+import com.examplecrud.crud.entities.Pessoa;
 import com.examplecrud.crud.repositories.PessoaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class PessoaService {
@@ -9,5 +13,13 @@ public class PessoaService {
 
     public PessoaService(PessoaRepository pessoaRepository) {
         this.pessoaRepository = pessoaRepository;
+    }
+
+    public List<Pessoa> listar(){
+        return pessoaRepository.findAll();
+    }
+    @Transactional
+    public Pessoa salvar(Pessoa pessoa){
+        return pessoaRepository.save(pessoa);
     }
 }
