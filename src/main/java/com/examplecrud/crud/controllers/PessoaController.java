@@ -20,6 +20,11 @@ public class PessoaController {
     public ResponseEntity<List<Pessoa>> buscarPessoa(){
         return ResponseEntity.ok(pessoaService.listar());
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Pessoa> buscarporId(@PathVariable Long id){
+        var pessoa=pessoaService.buscarporId(id);
+        return pessoa != null ? ResponseEntity.ok() : ResponseEntity.notFound().build();
+    }
     @PostMapping
     public ResponseEntity<Pessoa> cadastrarPessoa(@RequestBody Pessoa pessoa){
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.salvar(pessoa));
