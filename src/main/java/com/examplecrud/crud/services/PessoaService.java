@@ -4,6 +4,7 @@ import com.examplecrud.crud.entities.Pessoa;
 import com.examplecrud.crud.repositories.PessoaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -21,5 +22,12 @@ public class PessoaService {
     @Transactional
     public Pessoa salvar(Pessoa pessoa){
         return pessoaRepository.save(pessoa);
+    }
+    @Transactional
+    public void atualizar(Pessoa pessoa){
+        pessoaRepository.save(pessoa);
+    }
+    public void deletar(Long id){
+        pessoaRepository.deleteById(id);
     }
 }
