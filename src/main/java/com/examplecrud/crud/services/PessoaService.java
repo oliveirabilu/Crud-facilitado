@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PessoaService {
@@ -18,6 +19,11 @@ public class PessoaService {
 
     public List<Pessoa> listar(){
         return pessoaRepository.findAll();
+    }
+
+    public pessoa buscarporId(Long id){
+       Optional<Pessoa> optionalPessoa= pessoaRepository.findById(id);
+        return optionalPessoa.orElse(null);
     }
     @Transactional
     public Pessoa salvar(Pessoa pessoa){
