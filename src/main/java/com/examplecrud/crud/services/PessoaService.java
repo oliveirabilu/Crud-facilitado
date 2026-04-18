@@ -21,7 +21,7 @@ public class PessoaService {
         return pessoaRepository.findAll();
     }
 
-    public pessoa buscarporId(Long id){
+    public Pessoa buscarporId(Long id){
        Optional<Pessoa> optionalPessoa= pessoaRepository.findById(id);
         return optionalPessoa.orElse(null);
     }
